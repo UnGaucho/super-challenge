@@ -8,6 +8,11 @@ Main features:
 * Dockerized Spring Boot Java 17 REST Api
 * Asynchronously log every http request into a PostgresSQL JPA repository with pagination
 * Provide an api to fetch the request log
+* Small simple calc service with a backing cache
+* I ran out of time to complete the RateLimiter (I would've used a redis bucket with Resilience4j)
+* Same with Spring Retry and general error handling (sorry!)
+
+The most complete feature is the AsyncRequestLogging, please don't judge too harsh for the missing features!
 
 
 ## Considerations
