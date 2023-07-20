@@ -6,7 +6,10 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 
 public class CachedHttpServletResponse extends ContentCachingResponseWrapper {
 
-    private int cachedStatus;
+    /**
+     * Superclass defaults to 200. Will be overriden when it is intercepted during the filter chain.
+     */
+    private int cachedStatus = 200;
 
     /**
      * Create a new ContentCachingResponseWrapper for the given servlet response.
