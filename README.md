@@ -6,11 +6,12 @@
 
 Main features:
 * Dockerized Spring Boot Java 17 REST Api
+* Swagger (use the try it out feature) :sunglasses:
 * Asynchronously log every http request into a PostgresSQL JPA repository with pagination
 * Provide an api to fetch the request log
 * Small simple calc service with a backing cache
 * Rate limiter is implemented with a Filter, this works fine for a single service, for a distributed system I'd use
-a redis bucket.
+a redis bucket or an actual proxy.
 * Ran out of time for other stuff like using Spring Retry and general error handling (sorry!)
 
 The most complete feature is the AsyncRequestLogging, please don't judge too harsh for the missing features!
@@ -29,16 +30,9 @@ complex alternatives are push-sub notifications or leases. Most strategies add a
 
 ## Trying it out
 
-### Build local container :vertical_traffic_light:
-`docker run --rm -it -p 8080 $(docker build -q .)`
-
-### Or 
-
 ### Replicated with compose :airplane:
 `docker compose up --build`
 
 ### Swagger docs
-
-Check that you are pointing to a bound port with `docker ps`
 
 [Local swagger URI](http://localhost:8080/swagger-ui/index.html)
