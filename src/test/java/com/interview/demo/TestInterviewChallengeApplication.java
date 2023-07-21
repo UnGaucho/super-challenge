@@ -16,12 +16,6 @@ public class TestInterviewChallengeApplication {
         return new PostgreSQLContainer<>("postgres:latest");
     }
 
-    @Bean
-    @ServiceConnection(name = "redis")
-    GenericContainer<?> redisContainer() {
-        return new GenericContainer<>("redis:latest").withExposedPorts(6379);
-    }
-
     public static void main(String[] args) {
         SpringApplication.from(InterviewChallengeApplication::main)
                 .with(TestInterviewChallengeApplication.class)

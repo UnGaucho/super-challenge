@@ -1,5 +1,6 @@
-FROM eclipse-temurin:17-jdk-alpine as build
-WORKDIR /workspace/app
+FROM eclipse-temurin:17-jdk-alpine as builder
+
+WORKDIR /app
 
 COPY mvnw .
 COPY .mvn .mvn
@@ -7,12 +8,9 @@ COPY pom.xml .
 COPY src src
 
 RUN ./mvnw install -DskipTests
-RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 FROM eclipse-temurin:17-jdk-alpine
 
 VOLUME /tmp
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-
+COPY --from=builder /app/target/interview-challenge-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /app.jar ${0} ${@}"]
