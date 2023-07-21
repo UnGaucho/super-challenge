@@ -17,7 +17,7 @@ public class SumController {
         this.calcService = sum;
     }
 
-    @PostMapping(path = "/sum", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/api/sum", produces = MediaType.APPLICATION_JSON_VALUE)
     public SumResponseDTO sum(
             @RequestParam(value = "a") double a,
             @RequestParam(value = "b") double b) {

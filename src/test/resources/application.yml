@@ -5,5 +5,7 @@ spring:
       port: 6379
 
 interview:
+  ratelimit:
+    enabled: false
   redis:
     enable: true
