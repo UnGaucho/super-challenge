@@ -2,16 +2,19 @@ package com.interview.demo.config;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
 import redis.embedded.RedisServer;
 
 
 @TestConfiguration()
 public class TestRedisConfiguration {
-    private RedisServer redisServer;
+    private final RedisServer redisServer;
 
-    public TestRedisConfiguration(RedisConfiguration.RedisProperties redisProperties) {
-        this.redisServer = new RedisServer(redisProperties.getRedisPort());
+
+    public TestRedisConfiguration(RedisProperties redisProperties) {
+        this.redisServer = new RedisServer(redisProperties.getPort());
     }
 
     @PostConstruct
