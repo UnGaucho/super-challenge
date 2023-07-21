@@ -8,4 +8,4 @@ interview:
   ratelimit:
     enabled: false
   redis:
-    enable: true
+    override: true

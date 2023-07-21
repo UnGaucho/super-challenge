@@ -1,9 +1,11 @@
 package com.interview.demo;
 
+import com.interview.demo.config.TestRedisConfiguration;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -12,11 +14,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-        properties = "interview.ratelimit.enabled=true"
-
+        properties = {"interview.ratelimit.enabled=true", "spring.data.redis.port=6380"}
 )
 @AutoConfigureMockMvc
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@Import(TestRedisConfiguration.class)
 public class RateLimitIntegrationTest {
 
     @Autowired
